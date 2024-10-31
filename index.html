@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chih Yuan Chang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            height: 100vh; /* Ensures full height of the screen */
+            overflow: hidden;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            background-color: #1f2937;
+            color: white;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centers the content vertically */
+            padding: 20px;
+        }
+
+        .sidebar img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .sidebar nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 16px 0; /* Add vertical spacing between items */
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s;
+        }
+
+        .sidebar nav a:hover {
+            color: #f97316;
+        }
+
+        /* Main content */
+        .content {
+            flex: 1;
+            padding: 60px;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #1f2937;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #5c5e61;
+            margin-bottom: 20px;
+        }
+
+        .contact-info a {
+            color: #1f2937;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .social-links a {
+            font-size: 24px;
+            color: #1f2937;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f97316;
+        }
+
+        /* About section styling */
+        #about {
+            padding: 60px;
+            font-family: "Gill Sans", sans-serif;
+            
+        }
+
+        #about h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 18px;
+            color:rgb(28, 28, 69);
+        }
+
+
+        .ntu-logo {
+            margin-right: 15px;  /* Space between logo and text */
+            height: 60px;  /* Control logo size */
+        }
+
+        #about h5 {
+            font-family: 'italic', serif; /* Use a modern sans-serif font */
+            font-size: 20px;
+            letter-spacing: 0.8px;
+            color: #333; /* Modern dark gray color */
+            font-weight: 400; /* Light font-weight for sleek look */
+            margin: 0;
+        }
+
+        .separator {
+            border-bottom: 2px solid #ddd;  /* Gray line to separate the university section */
+            margin-top: 20px;
+            width: 100%;  /* Full width */
+        }
+
+        #about p {
+            font-size: 18.8px;
+            line-height: 1.7;
+            letter-spacing: 0.75px;
+            margin-bottom: 20px;
+        }
+
+        #about ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        #about ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .social-links img {
+            width: 30px;
+            margin-right: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+        }
+
+        a {
+            font-weight: 3000;
+            color: #473f3f; /* Dark gray */
+            text-decoration: none; /* Remove underline */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+
+        /* Responsive for smaller devices */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 20px;
+            }
+            .sidebar nav a {
+                margin: 0 15px;
+            }
+            .content {
+                padding: 30px;
+            }
+        }
+        /* Container for the lab logo outside the research block */
+        .lab-logo-container {
+            float: left; /* Float logo to the left */
+            margin-right: 20px; /* Space between logo and research block */
+            width: 100px; /* Adjust logo container size */
+        }
+
+        .lab-logo {
+            width: 80px; /* Adjust logo size */
+        }
+
+
+        .research-block {
+            background-color: #f0f4f8; /* Light background color for the blocks */
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            overflow: hidden;
+            max-height: 270px; /* Initial block height */
+            transition: max-height 0.9s ease, padding 0.9s ease; /* Smooth transition for height and padding */
+            position: relative;
+        }
+        
+        /* Style for lab names to make them larger and visually distinct */
+        .research-block h2 {
+            font-family: 'Montserrat', sans-serif; /* Change font to something distinct but modern */
+            font-size: 25px; /* Make the lab name bigger */
+            font-weight: 700; /* Bold font for emphasis */
+            color: #333; /* Darker color for better contrast */
+            margin-bottom: 15px; /* Add space below the lab name */
+        }
+
+        /* Style for lab names to make them larger and visually distinct */
+        .research-block h3 {
+            font-family: 'Montserrat', sans-serif; /* Change font to something distinct but modern */
+            font-size: 20px; /* Make the lab name bigger */
+            font-weight: 500; /* Bold font for emphasis */
+            color: #333; /* Darker color for better contrast */
+            margin-bottom: 15px; /* Add space below the lab name */
+        }
+
+        .research-block:hover {
+            max-height: 600px; /* Expand height on hover */
+            padding: 20px; /* Optional: Increase padding to add space */
+        }
+
+        .research-block p {
+            margin-bottom: 10px;
+        }
+
+        .more-text {
+            display: inline; /* Keep the hidden text inline */
+            opacity: 0; /* Initially hide text */
+            transition: opacity 0.3s ease; /* Smooth transition for text appearance */
+        }
+
+        .research-block:hover .more-text {
+            opacity: 1; /* Show text when hovering over the block */
+        }
+        
+        .category h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        /* Project block styling */
+        .project-block {
+            background-color: #f0f4f8; /* Light background color for the blocks */
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            overflow: hidden;
+            max-height: 260px; /* Initial block height */
+            transition: max-height 0.9s ease, padding 0.9s ease; /* Smooth transition for height and padding */
+            position: relative;
+        }
+        
+        /* Style for lab names to make them larger and visually distinct */
+        .project-block h2 {
+            font-family: 'Montserrat', sans-serif; /* Change font to something distinct but modern */
+            font-size: 25px; /* Make the lab name bigger */
+            font-weight: 800; /* Bold font for emphasis */
+            color: #333; /* Darker color for better contrast */
+            margin-bottom: 15px; /* Add space below the lab name */
+        }
+    
+
+        .project-block h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .skills {
+            font-family: 'Gill Sans', sans-serif; /* Change font to something distinct but modern */
+            font-size: 20px; /* Make the lab name bigger */
+            font-weight: 400; /* Bold font for emphasis */
+            color: #333; /* Darker color for better contrast */
+            margin-bottom: 15px; /* Add space below the lab name */
+            letter-spacing: 0.8px;
+        }
+
+        .project-block:hover {
+            max-height: 5000px; /* Expand height on hover */
+            padding: 20px; /* Optional: Increase padding to add space */
+        }
+
+        .project-block p {
+            margin-bottom: 10px;
+        }
+
+        .project-block:hover .more-text {
+            opacity: 1; /* Show text when hovering over the block */
+        }
+
+        .project-details {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #555;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .poster-img {
+            max-width: 60%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+            margin: 0 auto; /* Center the image */
+            border-radius: 5px; /* Add slight border radius for aesthetics */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow around the image */
+        }
+
+
+        /* Hidden project list initially */
+        .project-list {
+            margin-left: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="mypic.webp" alt="Chih Yuan Chang">
+        <h1>Edward Chang</h1>
+        <nav>
+            <a href="#about">ABOUT</a>
+            <a href="#research">RESEARCH</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#internship">INTERNSHIP</a>
+            <a href="#extracurricular">EXTRACURRICULAR</a>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <section id="about">
+            <h1>Chih-Yuan Chang</h1>
+            
+            <h5><i>Bachelor of Science - Psychology & Bioenvironmental Systems Engineering, National Taiwan University</i></h5>
+            
+            <div class="separator"></div>
+            <!-- Add separator for the bottom gray line -->
+
+            <p style="margin-top: 30px;">
+                
+                I am currently pursuing a double major in <i>Psychology</i> and <i>Bioenvironmental Systems Engineering</i> at National Taiwan University, with a GPA of 3.86/4.00, expected to graduate in January 2025. Driven by a passion for 
+                <u>Data Science</u>, I have independently completed numerous relevant courses, achieving an average of 4.00/4.00 in these subjects 
+                (see <a href="Resume.pdf" target="_blank"> <i>my resume</i></a> for details). 
+                
+
+                <br><br>Alongside maintaining academic performance across diverse fields, I have successfully applied my foundational knowledge in Data Science to solve real-world problems in different domains. This interdisciplinary approach has allowed me to participate in research across two distinct areas—<u>Computational Neuro&Social Science</u> and <u>Environmental Engineering</u>—where I utilized data science techniques to derive meaningful insights and propose innovative solutions. My contributions in both fields have led to <u>two independent papers</u>, each currently under preparation for submission to international journals 
+                (see <a href="#research"><i>Research</i></a> section).
+            </p>
+    
+            <div class="social-links" style="margin-top: 40px;">
+                <a href="https://github.com/EdChang716" target="_blank">
+                    <img src="Git-icon.png" alt="GitHub" style="width: 80px; height: auto;">
+                </a>
+                <p><br><br><br><br><br></p>
+            </div>
+            
+
+        </section>
+        <section id="about">
+            <h1 id="research">Research Experience</h1>
+            <div class="separator"></div>
+            <p>
+                <br>My research interests revolve around the core of data science/analytics, using diverse datasets to explore and solve real-world problems from social interactions to environmental issues. Particularly, I focus on applying advanced machine learning techniques and statistical models to uncover hidden patterns, enabling data-driven decision-making across multiple domains. 
+                <br>Below are the two distinct research labs where I served as a research assistant during my undergraduate studies.</p>
+
+            <p><br></p>
+            <div class="lab-logo-container">
+                <p><br></p>
+                <a href="https://www.chenlaboratory.com/" target="_blank">
+                    <img src="CHENLAB_logo.png" alt="Lab Logo" class="lab-logo">
+                </a>
+            </div>
+
+            <!-- First Research Lab with colored block -->
+            <div class="research-block" id = "lab1">
+                    <h2><strong>Computational Human-sociocultural Experimental Neuroscience Lab, NTU</strong></h2>
+                    <p><i>Research Assistant, Department of Psychology | Supervisor: Prof. Ping-Hao Chen &nbsp; Jan. 2023 - Present</i></p>
+                <!-- Short content for the first lab -->
+                <p>
+                    In CHEN Lab, I utilized advanced <strong>statistics methods, Natural Language Processing (NLP) techniques, and machine learning models</strong> to analyze multi-modal data, combining neural, behavioral, and linguistic insights to decode the complexities underlying social interactions. <br></p>
+                    <span class="more-text"> <!-- Hidden content -->
+                        <p>
+                            My work involved analyzing <u>conversational data using NLP, LLM</u>
+                        
+                            and processing posture data through ML models. 
+                            
+                            Moreover, I applied <u>statistical methods such as ANOVA, linear regression, RSA to analyze neural and behavioral datasets</u>.&nbsp; Aiming to uncover the mechanisms behind social interactions, providing deeper insights into the <u>dynamics of interpersonal relationships.</u>
+                            
+                            <br>
+                            <h2>Highlighted Publication:</h2>
+                            <h3><strong>Unpacking the Anna Karenina Principle: Mental Representations of Friendships and Their Impact on Well-Being</strong></h3>
+                            
+                        </p>
+                    </span>
+                    
+            </div>
+
+            <div class="lab-logo-container">
+                <p><br></p>
+                <a href="http://hyinfo.bse.ntu.edu.tw/WRHS/" target="_blank">
+                    <img src="CFJ_Lab.png" alt="Lab Logo" class="lab-logo">
+                </a>
+            </div>
+
+            <!-- Second Research Lab -->
+            <div class="research-block" id = "lab2">
+                <h2><strong>Water Resources and Hydroinformatics System Lab, NTU</strong></h2>
+                <p><i>Research Assistant, Department of BSE | Supervisor: Prof. Fi-John Chang &nbsp;Sep. 2022 - Aug. 2023</i></p>
+                
+                <!-- Short content for the second lab -->
+                <p>
+                    In WRHS Lab, I mainly focused on developing a <strong>deep learning-based multi-variate water quality prediction model</strong> to improve forecasting accuracy.
+                    <span class="more-text"> <!-- Hidden content -->
+                    <br><br>This work involved extensive <u>data scraping and system analysis</u> of hydrological, climate, and geographical datasets. Additionally, I employed <u>advanced imputation techniques</u> to handle missing data and applied series of LSTM models for time-series predictions.
+                    
+                
+                <br><br>
+                <h2>Highlighted Publication:</h2>
+                <h3><strong>Deep Learning and Imputation Techniques for Accurate Water Quality Predictions</strong></h3>
+                    </p>
+                </span>
+            </div>
+
+
+            
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="about">
+            <h1 id="projects">Projects</h1>
+            
+            <h2><br>Journal Submissions<br> </h2>
+        
+                <!-- First Journal Publication -->
+                <div class="project-block" id="Pub1" >
+                    <h3>Unpacking the Anna Karenina Principle: Mental Representations of Friendships and their Impact on Well-Being</h3>
+                    <p> <u>Chang, C-Y. E.</u>, F-C B. Chou, W-T W. Lee, J-H Chang & P-H A. Chen. (In process of submission) </p>
+                    
+                        <div class="skills">
+                            Skills: Advanced Statistics Analysis, Mental Representations, Social Interactions, Mental Health
+                        </div>
+                            <span class="more-text"> <!-- Hidden content -->
+                            <p><br>
+                            We utilize a novel appraoch to investigate the link between mental representations of friendships and well-being through the Anna Karenina principle. By employing representational analysis, we found strong evidence demonstrating that not only quality or quantity of friendships predict well-being, but also how individuals represent their relationships in their minds can determine their well-being. The paper is currently under preparation for journal submission; therefore, further details cannot be disclosed at this time.
+                            </p>
+                        </span>
+                    </p>
+                </div>
+
+                <!-- Second Journal Publication -->
+                <div class="project-block" id="Pub2">
+                    <h3>Leveraging Deep Learning and Imputation Techniques for Accurate Water Quality</h3>
+                    <p> <u>Chang, C-Y. E.</u>, V. H-C Liao, F-J Chang. (In process of submission) </p>
+                    
+                    <div class="skills">
+                        Skills: Deep Learning, Statistics, Data Scraping, Environmental and Water Management
+                    </div>
+                    <span class="more-text"> <!-- Hidden content -->
+                        <p><br>
+                            We present a novel framework combining MICE-RF imputation and LSTM-ED models to predict Dissolved Oxygen (DO) and Ammonia Nitrogen (NH3-N) levels in water bodies. Leveraging over 22,000 hourly data points, our model significantly outperforms traditional LSTM and CNN-LSTM models, achieving up to 14.1% R² improvement for DO and 13.9% for NH3-N, offering reliable multi-step forecasts and robust handling of missing data. The paper is currently under preparation for journal submission; therefore, further details cannot be disclosed at this time.
+                            <!-- <br>The following image is a graphical abstract, providing a visual summary of the study.-->
+                        </p>
+                        <!-- img src="LSTM_abstract.png" class="poster-img"-->
+                    </span>
+                </p>
+                    
+                </div>
+
+            <!-- Conference Presentations Section -->
+            
+            <h2><br>Conference Presentations and Posters<br> </h2>
+                
+                <!-- First Journal Publication -->
+                <div class="project-block" id="Pub1" >
+                    <h3>Exploring cross-domain text semantic similarity using large language models</h3>
+                    <p> <u>Chang, C-Y. E.</u>, Chou, F.-C. B., Chen, P.-H. A.(2023).<br>Taiwanese Psychological Association Annual Meeting</p>
+                    
+                        <div class="skills">
+                            Skills: NLP, Large Language Model
+                        </div>
+                            <span class="more-text"> <!-- Hidden content -->
+                            <p><br>
+                                We utilize OpenAI's text embedding model to investigate whether text embeddings accurately reflect semantic similarity and how the simialarities could be affected by the lengths of the texts from a dataset comprising nearly 35 articiles across various domains.
+                            <br>The results demonstrate that These embeddings successfully differentiate articles from various domains. However, longer articles demonstrated higher semantic similarity compared to shorter ones, even within the same domain. This project offers valuable insights for future researchers, emphasizing the need to account for article or conversational text length as a potential confounding factor in text similarity analysis using LLM methods.
+                            </p>
+                            <img src="text_poster.png" class="poster-img">
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="project-block" id="Pub1" >
+                    <h3>Exploring the impact of self-monitoring on neural representations of food cues: an intersubject representational similarity analysis approach</h3>
+                    <p> Chen, P.-H. A., <u>Chang, C-Y. E.</u>, Chou, F.-C. B., Chen, P.-H. A.(2023). <br>International Neuropsychological Society 2023 Conference</p>
+                    
+                        <div class="skills">
+                            Skills: Advanced statistics Analysis(ISRSA), fMRI, Neural Representations, Self-Regulation
+                        </div>
+                            <span class="more-text"> <!-- Hidden content -->
+                            <p><br>
+                                This study investigates the impact of self-monitoring on neural representations of food cues using intersubject representational similarity analysis (ISRSA). Forty-one participants were divided into self-monitoring and non-monitoring groups, with fMRI data collected during food-cue reactivity tasks.
+                            <br>Results show that only the self-monitoring group exhibited significant intersubject similarity in neural responses to food cues, particularly in the FP control network. These findings suggest that self-monitoring enhances executive control and error monitoring in response to tempting food stimuli, offering new insights into the neural mechanisms underlying dietary self-regulation.
+                            </p>
+                            <img src="neural_poster.png" class="poster-img">
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="project-block" id="Pub1" >
+                    <h3>Mental representations of friendships predict subjective well-being</h3>
+                    <p> <u>Chang, C-Y. E.</u>, F-C B. Chou, W-T W. Lee, J-H Chang & P-H A. Chen.(2024). <br>Taiwanese Psychological Association Annual Meeting</p>
+                    
+                        <div class="skills">
+                            Oral presentation of the publication - Unpacking the Anna Karenina Principle: Mental Representations of Friendships and their Impact on Well-Being
+                        </div>
+                    </p>
+                </div>
+            
+        </section>
+        <script>
+        function toggleVisibility(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+        </script>
+
+
+            
+    <section id="about">
+        <h1 id="internship">Internship</h1>
+            <br>
+            <h2> CAYIN TECHNOLOGY CO., LTD., Taipei, Taiwan</h2>
+            <p>LLM Project Development, &nbsp;July 2024 - Aug. 2024</p>
+            <p>I accomplished a project focused on integrating large language models and generative AI into the company’s design interface. I developed a web application that demonstrated how generative AI could rapidly generate high-quality ad copy and design templates for customers. 
+                Additionally, by collaborating with the R&D team to integrate these AI-driven features into the company’s software, we expect to enhance both efficiency and user experience.
+            <br>
+            </p>
+        </section>
+    <section id="about">
+        <h1 id="extracurricular"><br>Extracurricular</h1>
+            <div class="separator"></div>  
+            <p><br>I have a strong passion for both <u>sports and music</u>, which have been integral parts of my life throughout my university years. These activities have allowed me to develop leadership skills, teamwork, and creativity outside of my academic endeavors.</p>
+            <!-- Basketball -->
+            <div class="project-block" id="Pub1" >
+                <h2>Music</h2>                    
+                <p>
+                    <br>I was the keyboardist for the band DayBreak Crammers from January 2019 to June 2023. Our band played pop-punk music, and during this time,
+                    
+                        we co-wrote many songs and released two of them on the music platform StreetVoice.<br>
+                        <span class="more-text"></span>
+                        <a href="https://streetvoice.com/daybreak_crammers/" target="_blank"><strong>(Click here to listen!)</strong></a>
+                        
+                        <br><br>Additionally, I also participated in another band and won the Best Live Performance Award at the prestigious 38th NCCU Golden Melody Award in 2021. 
+                        Playing in the band has been a creative outlet for me, allowing me to explore different musical styles and express myself through performance.
+                        <br>
+                        <div class="video-container" style="text-align: center; margin-top: 20px;">
+                            <iframe width="560" height="315" 
+                            src="https://www.youtube.com/embed/gOOzDJ9PZF4" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="border: 4px solid #333; border-radius: 10px;">
+                            </iframe>
+                        </div>
+                </span>
+                </p>
+
+            </div>
+            <div class="project-block" id="Pub1" >
+                <h2>Basketball</h2>                    
+                <p>
+                    <br>As the Captain of the Men's Basketball Team in the Department of BSE at NTU from July 2021 to June 2023, I led the team to two runner-up finishes in both interdepartmental and national competitions. 
+                    <br>This experience not only strengthened my leadership and strategic thinking but also fostered a strong sense of collaboration and resilience within the team. 
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
